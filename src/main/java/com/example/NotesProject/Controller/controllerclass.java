@@ -20,6 +20,7 @@ public class controllerclass {
         mod.addAttribute("noteobj",new modelclass());
         mod.addAttribute("list",servobj.show());
         return "Notes";
+
     }
     @PostMapping("/")
     public String show(@ModelAttribute("noteobj")modelclass model)
