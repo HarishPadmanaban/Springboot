@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Notes Project Using CRUD in Springboot</title>
+  <style>
+    form{
+        text-align: center;
+        margin-top:150px;
+        margin-left:10px;
+        padding:10px;
+
+    }
+    #t1{
+        height: 50px;
+        width: 50%;
+        padding:5px;
+        border-radius:10px ;
+        font-size: large;
+    }
+    #t2{
+        height: 30px;
+        width: 100px;
+        border-radius:10px ;
+    }
+    body{
+        background-color: cadetblue;
+    }
+    table{
+        text-align: center;
+        width:80%;
+        margin-left: 10%;
+        margin-top: 100px;
+        background-color: whitesmoke;
+        color: red;
+        border-radius: 10px;
+    }
+    a{
+     text-decoration:none;
+     color:black;
+    }
+    a:hover{
+    color:red;
+    font-size:larger;
+    }
+    table{
+    font-size:large;
+    }
+  </style>
+</head>
+<body>
+<form action="#" th:action="@{/notes/}" th:object="${noteobj}" method="post">
+  <input type="text" placeholder="Add your notes" id="t1" name="t1" th:field="*{note}" required><br>
+  <input style="margin-top:20px;cursor:pointer;" type="submit" value="Add" id="t2" name="t2">
+</form>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th width="10%">ID</th>
+    <th>Notes</th>
+    <th width="10%">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="m : ${list}">
+    <td th:text="${m.id}"></td>
+    <td th:text="${m.note}"></td>
+    <td>
+      <a th:href="@{/notes/edit/{id}(id=${m.id})}">Edit</a> |
+      <a th:href="@{/notes/del/{id}(id=${m.id})}">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

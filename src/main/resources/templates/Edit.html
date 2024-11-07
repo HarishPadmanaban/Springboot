@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Notes</title>
+  <style>
+    form{
+        text-align: center;
+        margin-top:150px;
+        margin-left:10px;
+        padding:10px;
+    }
+    #t1{
+    height: 50px;
+        width: 50%;
+        padding:5px;
+        border-radius:10px ;
+        font-size: large;
+    }
+     #but{
+        height: 30px;
+        width: 100px;
+        border-radius:10px ;
+    }
+    body{
+        background-color: cadetblue;
+    }
+  </style>
+</head>
+<body>
+
+<form action="#" th:object="${noteobj}" th:action="@{/notes/update/{id}(id=${noteobj.id})}"  method="post">
+
+  <input id="t1" type="text" name="t1" th:field="*{note}"><br>
+
+
+  <input style="margin-top:20px;cursor:pointer;" id="but" type="submit" value="Update">
+</form>
+</body>
+</html>
